@@ -2,12 +2,10 @@
  <div class="auth-bg">
    <notifications/>
    <Loader v-show="loading"/>
-    <div class="auth-bg-cover"><img src="../../assets/images/lasubeb_logo_only-1.png" loading="lazy" width="78" alt="">
+     <div class="auth-bg-cover">
+     <Logo/>
       <div class="auth-div">
-        <div class="auth-heading">
-          <div class="auth-header">Login into your account</div>
-          <div class="auth-sub">Fill in your valid credentials to continue</div>
-        </div>
+        <AuthHeader title="Login into your Account" sub="Fill in your valid credentials to continue"/>
         <div>
           <form @submit.prevent="login">
             <div class="auth-form-col"><label for="name" class="auth-form-label">Username</label><input v-model="user.email_address" type="text" class="auth-input w-input"  placeholder="Enter your username" required></div>
@@ -22,7 +20,7 @@
 
         <div class="auth-footer"><img src="../../assets/images/info.svg" loading="lazy" alt="" class="info-icon">
           <div class="text-block">
-            <router-link to="/register" class="auth-text-link">Register Here</router-link>| Experiencing any problem with loging into your account ? Kindly contact the super admin to help resolve your issues.
+        Experiencing any problem with loging into your account ? Kindly contact the super admin to help resolve your issues.
           </div>
         </div>
       </div>
@@ -34,16 +32,20 @@
 import axios from "axios"
 import url from '../../../url'
 import Loader from "../../components/UI/loader.vue"
+import AuthHeader from "../../components/Auth/AuthHeader.vue"
+import Logo from "../../components/Global/Logo.vue"
 export default {
   components: {
-   Loader
+   Loader,
+   AuthHeader,
+   Logo
   },
     data(){
     return{
       loading: false,
       user:{
-        email_address: '',
-        password: ''
+        email_address: 'test@test.com',
+        password: 'test@100'
       }
     }
 },

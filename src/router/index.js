@@ -1,16 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Auth/Login.vue'
-import Register from '../views/Auth/Register.vue'
 import Overview from '../views/Dashboard/Admin/Overview/Overview'
 import Settings from '../views/Dashboard/Admin/Settings/Settings'
 import Admin from '../views/Dashboard/Admin/Admin'
 import AddAdmin from '../views/Dashboard/Admin/AddAdmin'
-import Volunteers from '../views/Dashboard/Admin/Volunteers'
 import ReportForm from '../views/Dashboard/Volunteers/ReportForm'
-import Uploads from '../views/Dashboard/Volunteers/Uploads'
-import EditReport from '../views/Dashboard/Volunteers/EditReport'
-import Comparison from '../views/Dashboard/Admin/Comparison'
 import Projects from '../views/Dashboard/Admin/Projects'
 import Project from '../views/Dashboard/Admin/ProjectsTable'
 import ProjectDetails from '../views/Dashboard/Admin/ProjectDetails'
@@ -23,14 +18,6 @@ const routes = [
     path: '/',
     name: 'Login',
     component: Login,
-    meta :{
-      requiresGuestAdmin: true
-    }
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: Register,
     meta :{
       requiresGuestAdmin: true
     }
@@ -76,39 +63,7 @@ const routes = [
     }
   },
   
-  {
-    path: '/volunteers',
-    name: 'Volunteers',
-    component: Volunteers,
-    meta :{
-      requiresAuth: true
-    }
-  },
-  {
-    path: '/uploads',
-    name: 'Uploads',
-    component: Uploads,
-    meta :{
-      requiresAuth: true
-    }
-  },
-  {
-    path: '/edit-report',
-    name: 'EditReport',
-    component: EditReport,
-    meta :{
-      requiresAuth: true
-    }
-  },
-  {
-    path: '/comparison',
-    name: 'Comparison',
-    component: Comparison,
-    meta :{
-      requiresAuth: true
-    }
-  }
-  ,
+
   {
     path: '/projects',
     name: 'Projects',
