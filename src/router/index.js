@@ -18,7 +18,7 @@ const routes = [
     path: '/',
     name: 'Login',
     component: Login,
-    meta :{
+    meta: {
       requiresGuestAdmin: true
     }
   },
@@ -26,7 +26,7 @@ const routes = [
     path: '/overview',
     name: 'Overview',
     component: Overview,
-    meta :{
+    meta: {
       requiresAuth: true
     }
   },
@@ -34,7 +34,7 @@ const routes = [
     path: '/settings',
     name: 'Settings',
     component: Settings,
-    meta :{
+    meta: {
       requiresAuth: true
     }
   },
@@ -42,7 +42,7 @@ const routes = [
     path: '/admin',
     name: 'Admin',
     component: Admin,
-    meta :{
+    meta: {
       requiresAuth: true
     }
   },
@@ -50,7 +50,7 @@ const routes = [
     path: '/add-admin',
     name: 'AddAdmin',
     component: AddAdmin,
-    meta :{
+    meta: {
       requiresAuth: true
     }
   },
@@ -58,37 +58,37 @@ const routes = [
     path: '/report-form',
     name: 'ReportForm',
     component: ReportForm,
-    meta :{
+    meta: {
       requiresAuth: true
     }
   },
-  
+
 
   {
     path: '/projects',
     name: 'Projects',
     component: Projects,
-    meta :{
+    meta: {
       requiresAuth: true
     }
   }
-  
+
   ,
   {
     path: '/project/:id',
     name: 'Project',
     component: Project,
-    meta :{
+    meta: {
       requiresAuth: true
     }
   }
-  
+
   ,
   {
     path: '/project-details',
     name: 'ProjectDetails',
     component: ProjectDetails,
-    meta :{
+    meta: {
       requiresAuth: true
     }
   },
@@ -96,13 +96,13 @@ const routes = [
     path: '/logs',
     name: 'Logs',
     component: Logs,
-    meta :{
+    meta: {
       requiresAuth: true
     }
   }
 
-  
-  
+
+
 
 ]
 
@@ -118,37 +118,37 @@ router.beforeEach((to, from, next) => {
     if (localStorage.getItem('pk')) {
       next();
     }
-    else {    
-      next({path: '/'});
+    else {
+      next({ path: '/' });
     }
-  } 
-
- else if(to.matched.some(record => record.meta.requiresGuestAdmin)){
-   if(localStorage.getItem('pk') && localStorage.getItem('role') == 0){
-     next({
-       path: '/overview',
-       query: {
-         redirect: to.fullPath
-       }
-     })
-   }
-   else if(localStorage.getItem('pk') && localStorage.getItem('role') == 1){
-    next({
-      path: '/volunteers-form',
-      query: {
-        redirect: to.fullPath
-      }
-    })
   }
-   else{
-     next();
-   }
 
-}
+  else if (to.matched.some(record => record.meta.requiresGuestAdmin)) {
+    if (localStorage.getItem('pk') && localStorage.getItem('role') == 0) {
+      next({
+        path: '/overview',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    }
+    else if (localStorage.getItem('pk') && localStorage.getItem('role') == 1) {
+      next({
+        path: '/volunteers-form',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    }
+    else {
+      next();
+    }
 
-else{
- next();
-}
+  }
+
+  else {
+    next();
+  }
 });
 
 export default router
