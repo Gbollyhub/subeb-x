@@ -1,4 +1,4 @@
-# lasubeb-tep
+# Subeb-tep
 
 ## Project setup
 ```
